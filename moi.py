@@ -3,6 +3,8 @@ import json
 import requests
 import matplotlib.pyplot as plt
 from collections import defaultdict
+import time
+
 url = 'http://13.48.149.61:8000/notify.json'
 app = Flask(__name__)
 
@@ -29,6 +31,12 @@ X, Y = list(zip(*dicc[keys[0]][macs[3]]))
 plt.scatter(X, Y)
 plt.show()
 '''
+
+
+for i in range(1000):
+    print(i)
+    time.sleep(1)
+
 
 @app.route('/<mac>/')
 def user(mac):
