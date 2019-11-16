@@ -35,7 +35,7 @@ def show_interest_points():
 
 @app.route('/<mac>/')
 def get_info(mac):
-    return json.dumps({"response":"Ei que tal " + mac})
+    return json.dumps({"response":"Nothing to see here"})
 
 
 @app.route('/mac/<mac_a_trobar>/')
