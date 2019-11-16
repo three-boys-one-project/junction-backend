@@ -11,7 +11,7 @@ app = Flask(__name__)
 r = requests.get(url)
 
 
-@app.route('/home/')
+@app.route('/')
 def pro():
     return "Hello World!"
 
