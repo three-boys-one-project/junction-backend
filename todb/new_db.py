@@ -33,6 +33,6 @@ for i in a:
         for k in i[j].keys():
             dicc = {'map':j}
             dicc.update(i[j][k])
-            db.child(k).set(dicc)
+            db.child('map').child(k).set(dicc)
 
     # db.child(a[i][])
