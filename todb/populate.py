@@ -2,6 +2,7 @@ import json
 import requests
 import time
 import pyrebase
+import re
 
 config = {
   "apiKey": "AIzaSyBra07LSvzKcKiicYI32rINLsva8Ozf5D4",
@@ -34,11 +35,14 @@ while True:
         a = json.loads('[' + r.text[:-2] + ']')
     except Exception as e:
         print('[' + r.text + ']')
+        #print("-------------------------------------")
         print(e)
+        #print(re.findall(r'\d+',str(e)))
+        #print("-------------------------------------")
     if a:
         print("New entries!!")
         for item in a:
             xy = get_coor(item)
-            db.child(get_mac(item)).set({'map':str(get_map(item)), 'x' : str(xy['x']), 'y':str(xy['y'])})
+            db.child('mac').child(get_mac(item)).set({'map':str(get_map(item)), 'x' : str(xy['x']), 'y':str(xy['y'])})
 
 
