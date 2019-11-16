@@ -33,7 +33,7 @@ oauth2client==3.0.0
 protobuf==3.10.0
 pyasn1==0.4.7
 pyasn1-modules==0.2.7
-pycryptodome==3.4.3
+pycryptodome==3.6.6
 pylint==2.4.4
 pyparsing==2.4.5
 Pyrebase==3.0.27
