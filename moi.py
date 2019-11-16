@@ -17,6 +17,12 @@ firebase = pyrebase.initialize_app(config)
 db = firebase.database()
 app = Flask(__name__)
 
+@app.route('/home/')
+def pro():
+    return "Hello World!"
+
+
+
 @app.route('/<mac>/')
 def user(mac):
     #x = json.loads(r.text)
@@ -24,10 +30,6 @@ def user(mac):
     tosend["response"] = "Nothing to see here" 
 
     return json.dumps(tosend, ensure_ascii=False)
-
-
-
-
 
 '''get_mac = lambda a: a['notifications'][0]['deviceId']
 get_coor = lambda a: a['notifications'][0]['locationCoordinate']

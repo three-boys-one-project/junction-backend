@@ -8,7 +8,7 @@ config = {
   "authDomain": "boys-for-junction.firebaseapp.com",
   "databaseURL": "https://boys-for-junction.firebaseio.com",
   "storageBucket": "boys-for-junction.appspot.com",
-  "serviceAccount": "boys-for-junction-firebase-adminsdk-mq573-34deda5cac.json"
+  "serviceAccount": "../boys-for-junction-firebase-adminsdk-mq573-34deda5cac.json"
 }
 
 firebase = pyrebase.initialize_app(config)
