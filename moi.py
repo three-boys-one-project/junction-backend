@@ -11,10 +11,21 @@ app = Flask(__name__)
 r = requests.get(url)
 
 
-get_mac = lambda a: a['notifications'][0]['deviceId']
+@app.route('/<mac>/')
+def user(mac):
+    #x = json.loads(r.text)
+    tosend = {}
+    tosend["response"] = "Nothing to see here" if mac == "0:0:0:0:0:0" else "Are you hydrated enough? ( ⚆ _ ⚆ )"
+    return json.dumps(tosend, ensure_ascii=False)
+
+
+
+
+
+'''get_mac = lambda a: a['notifications'][0]['deviceId']
 get_coor = lambda a: a['notifications'][0]['locationCoordinate']
 get_map = lambda a: a['notifications'][0]['locationMapHierarchy']
-'''with open('/home/horno/hackathons/junction/wifi_stuff/OneDrive_1_11-15-2019/wifidata/notify.json.2019-11-04-16-54', 'r') as fd:
+with open('/home/horno/hackathons/junction/wifi_stuff/OneDrive_1_11-15-2019/wifidata/notify.json.2019-11-04-16-54', 'r') as fd:
     a = json.load(fd)
 dicc = defaultdict(lambda : defaultdict(list))
 
@@ -31,12 +42,3 @@ X, Y = list(zip(*dicc[keys[0]][macs[3]]))
 plt.scatter(X, Y)
 plt.show()
 '''
-
-
-
-
-@app.route('/<mac>/')
-def user(mac):
-    x = json.loads(r.text)
-    print("something")
-    return "HOTAL"
