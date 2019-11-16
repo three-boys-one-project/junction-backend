@@ -33,9 +33,6 @@ plt.show()
 '''
 
 
-for i in range(1000):
-    print(i)
-    time.sleep(1)
 
 
 @app.route('/<mac>/')
