@@ -27,7 +27,7 @@ def pro():
 def user(mac):
     #x = json.loads(r.text)
     tosend = {}
-    tosend["response"] = "Nothing to see here" 
+    tosend["response"] = "Nothing to see here bucko" 
 
     return json.dumps(tosend, ensure_ascii=False)
 
