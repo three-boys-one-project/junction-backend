@@ -1,1 +1,1 @@
-web:  guniconr moi:app
+web:  gunicorn moi:app
