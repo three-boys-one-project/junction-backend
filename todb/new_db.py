@@ -25,20 +25,14 @@ get_map = lambda a: a['notifications'][0]['locationMapHierarchy']
 
 # db.child('mp').child('durmac').set({'x':str(1.06), 'y':str(1.03)})
 
+with open('json_fin.json', 'r') as fd:
+    a = json.load(fd)
 
-while True:
-    time.sleep(1)
-    r = requests.get(url)
-    a = False
-    try:
-        a = json.loads('[' + r.text[:-2] + ']')
-    except Exception as e:
-        print('[' + r.text + ']')
-        print(e)
-    if a:
-        print("New entries!!")
-        for item in a:
-            xy = get_coor(item)
-            db.child(get_mac(item)).set({'map':str(get_map(item)), 'x' : str(xy['x']), 'y':str(xy['y'])})
+for i in a:
+    for j in i.keys():
+        for k in i[j].keys():
+            dicc = {'map':j}
+            dicc.update(i[j][k])
+            db.child(k).set(dicc)
 
-
+    # db.child(a[i][])
