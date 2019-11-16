@@ -1,15 +1,21 @@
 from flask import Flask, escape, url_for
-import json
-import requests
-import matplotlib.pyplot as plt
 from collections import defaultdict
+import matplotlib.pyplot as plt
+import request
+import json
 import time
 
-url = 'http://13.48.149.61:8000/notify.json'
+config = {
+    "apiKey": "AIzaSyBra07LSvzKcKiicYI32rINLsva8Ozf5D4",
+    "authDomain": "boys-for-junction.firebaseapp.com",
+    "databaseURL": "https://boys-for-junction.firebaseio.com", 
+    "storageBucket": "boys-for-junction.appspot.com",
+    "serviceAccount": "../boys-for-junction-firebase-adminsdk-mq573-34deda5cac.json"
+}
+
+firebase = pyrebase.initialize_app(config)
+db = firebase.database()
 app = Flask(__name__)
-
-r = requests.get(url)
-
 
 @app.route('/')
 def pro():
@@ -21,7 +27,8 @@ def pro():
 def user(mac):
     #x = json.loads(r.text)
     tosend = {}
-    tosend["response"] = "Nothing to see here" if mac == "0:0:0:0:0:0" else "Are you hydrated enough? ( ⚆ _ ⚆ )"
+    tosend["response"] = "Nothing to see here" 
+
     return json.dumps(tosend, ensure_ascii=False)
 
 '''get_mac = lambda a: a['notifications'][0]['deviceId']
