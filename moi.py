@@ -11,16 +11,18 @@ app = Flask(__name__)
 r = requests.get(url)
 
 
+@app.route('/home/')
+def pro():
+    return "Hello World!"
+
+
+
 @app.route('/<mac>/')
 def user(mac):
     #x = json.loads(r.text)
     tosend = {}
     tosend["response"] = "Nothing to see here" if mac == "0:0:0:0:0:0" else "Are you hydrated enough? ( ⚆ _ ⚆ )"
     return json.dumps(tosend, ensure_ascii=False)
-
-
-
-
 
 '''get_mac = lambda a: a['notifications'][0]['deviceId']
 get_coor = lambda a: a['notifications'][0]['locationCoordinate']
