@@ -27,12 +27,12 @@ def pro():
 
 @app.route('/<mac>/')
 def get_info(mac):
-    '''rand = random.randint(1,101)
-    for elems in db.child('places').get().val():
-        print()'''
-    if random.randint(1,101) < 80:
+    tmp = db.child('places').get().val()
+    a = list(tmp)
+    key = a.pop(random.randint(0, len(a) - 1))
+    if random.randint(1,101) < 20:
         return json.dumps({"response":"Nothing to see here"})
-    return json.dumps({"response":"Yo should go duck urself, quack!"})
+    return json.dumps({"response":str(tmp[key]['message'])})
 
 '''@app.route('/init/')
 def init_routine():
