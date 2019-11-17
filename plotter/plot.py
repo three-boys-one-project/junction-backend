@@ -17,6 +17,11 @@ firebase = pyrebase.initialize_app(config)
 db = firebase.database()
 
 mac_meva = "asd"
+
+fig = plt.figure()
+ax = fig.add_subplot(1, 1, 1)
+ax = plt.gca()
+ax.set_facecolor('xkcd:black')
 while True:  
         a = db.child('mac').get().val()
         x = []
@@ -33,6 +38,8 @@ while True:
             
             #for i in range(len(x)):
                 #plt.scatter(y[i], x[i], color='red')
+            ax = plt.gca()
+            ax.set_facecolor('xkcd:black')
             plt.scatter(y,x)
             plt.pause(0.1)
             plt.clf()
