@@ -1,5 +1,0 @@
-{
-  "coffee area": {"map": "Otaniemi>Väre>1", "x":20, "y":30},
-  "front door" : {"map": "Otaniemi>Väre>1", "x":40 ,"y": 90},
-  "terrace" : {"map": "Otaniemi>Väre>2", "x": 56 ,"y": 44}
-}

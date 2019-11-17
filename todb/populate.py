@@ -28,10 +28,11 @@ get_map = lambda a: a['notifications'][0]['locationMapHierarchy']
 
 # db.child('mp').child('durmac').set({'x':str(1.06), 'y':str(1.03)})
 
-fd = open('todb/places.dat', 'r')
-places_json = fd.read()
+with open('todb/places.json', 'r') as fd:
+    places_json = fd.read()
+
 places = json.loads(places_json)
-print(places)
+
 for elem in places:
     #db.child('places').child(elem).set({'map': str(places[elem]), 'x' : str(places[elem]['x']), 'y':str(places[elem]['y'])})
     db.child('places').set(places)
@@ -53,7 +54,6 @@ while True:
         for item in a:
             xy = get_coor(item)
             db.child('mac').child(get_mac(item)).set({'map':str(get_map(item)), 'x' : str(xy['x']), 'y':str(xy['y']), 'profile_measure':random.randint(0,101)})
-
 
 
 

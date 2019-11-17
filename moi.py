@@ -6,7 +6,7 @@ import pyrebase
 import json
 import time
 import random
-
+import threading
 
 config = {
     "apiKey": "AIzaSyBra07LSvzKcKiicYI32rINLsva8Ozf5D4",
@@ -21,28 +21,34 @@ db = firebase.database()
 app = Flask(__name__)
 
 places = {'fountain':(24,11), 'terrace':(73,56), 'dancehall':(5,9)}
-
 @app.route('/')
 def pro():
-    N = 50
-    x = np.random.rand(N)
-    y = np.random.rand(N)
-        
-    print(x[0])
-    print(y[0])
-
-    plt.scatter(x, y)
-    plt.show()
-
     return "Hi and stuff"
 
 @app.route('/<mac>/')
 def get_info(mac):
-    if random.randint(1,3) % 2:
+    '''rand = random.randint(1,101)
+    for elems in db.child('places').get().val():
+        print()'''
+    if random.randint(1,101) < 80:
         return json.dumps({"response":"Nothing to see here"})
     return json.dumps({"response":"Yo should go duck urself, quack!"})
 
+'''@app.route('/init/')
+def init_routine():
+    #try:
+    threading.Thread(target=find_matches).start()
+    #except:
+        #print("Error in the creation of threads")
+    return "Done!"
 
+
+def find_matches():
+    for elems in db.child('mac').get().val():
+        print(elems)
+    print("Done too!")
+    return "Done!"
+'''
 @app.route('/mac/<mac_a_trobar>/')
 def user(mac_a_trobar):
     #x = json.loads(r.text)
@@ -50,7 +56,7 @@ def user(mac_a_trobar):
     n_macs = 0
     trobada = False
     tosend = {}
-    tosend["response"] = "Nothing to see here bucko"
+    tosend["response"] = "Nothing to see here"
     try:
         if mac_a_trobar != "favicon.ico":
             a = db.get().val()
@@ -59,13 +65,29 @@ def user(mac_a_trobar):
                     n_macs = n_macs + 1
                     if mac == mac_a_trobar:
                         trobada = True
-                        print(mac + " trobat!!!!!!!!!!!!!!!!!!!!!!!!!!")
+                        print(mac + " trobat!")
                     else:
                         print(mac + " no concorda amb " + mac_a_trobar)
 
         if trobada: print("trobada bro")
         print(n_macs)
         return a
-    except Exception as e:
+    except Exception as _:
         return '{"response":"KO"}'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

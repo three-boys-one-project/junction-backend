@@ -1,0 +1,4 @@
+{
+  "coffee area": {"map": "Otaniemi>Väre>1", "x":20, "y":30, "message":"Coffee time!!"},
+  "front door" : {"map": "Otaniemi>Väre>1", "x":40 ,"y": 90 , "message":"Oxygen is very important for the brain, how about some fresh air?"},
+  "karaoke" : {"map": "Otaniemi>Väre>2", "x": 56 ,"y": 44, "Never gonna give you up, never gonna let you down... Did you know there is a karaoke area?"
