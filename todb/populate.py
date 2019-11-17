@@ -17,7 +17,8 @@ firebase = pyrebase.initialize_app(config)
 
 db = firebase.database()
 
-url = 'http://13.48.149.61:8000/notify.json'
+#url = 'http://13.48.149.61:8000/notify.json'
+url = 'http://13.48.149.61:8000/notifycache.json'
 
 get_mac = lambda a: a['notifications'][0]['deviceId']
 get_coor = lambda a: a['notifications'][0]['locationCoordinate']

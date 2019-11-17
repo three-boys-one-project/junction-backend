@@ -16,9 +16,6 @@ config = {
     # "serviceAccount": "../boys-for-junction-firebase-adminsdk-mq573-34deda5cac.json"
 }
 
-
-
-
 firebase = pyrebase.initialize_app(config)
 db = firebase.database()
 app = Flask(__name__)
@@ -38,34 +35,6 @@ def pro():
     plt.show()
 
     return "Hi and stuff"
-
-@app.route('/plot/')
-def plot_macs():
-    while True:    
-        a = db.child('mac').get().val()
-        x = []
-        y = []
-        for elem in a:
-            print(elem)
-            print(a[elem]['x'])
-            print(a[elem]['y'])
-            x.append(float(a[elem]['x']))
-            y.append(float(a[elem]['y']))
-            
-        for i in range(len(x)):
-            plt.scatter(y[i], x[i])
-        plt.pause(0.1)
-        plt.clf() 
-    #plt.show()
-
-    '''plt.scatter(x, y)
-    #iplt.ion()
-    plt.show(block = False)
-    time.sleep(2)
-    plt.clf()
-    time.sleep(1)
-    #plt.close()'''
-    return json.dumps(places, ensure_ascii= True)    
 
 @app.route('/<mac>/')
 def get_info(mac):
@@ -100,23 +69,3 @@ def user(mac_a_trobar):
     except Exception as e:
         return '{"response":"KO"}'
 
-'''get_mac = lambda a: a['notifications'][0]['deviceId']
-get_coor = lambda a: a['notifications'][0]['locationCoordinate']
-get_map = lambda a: a['notifications'][0]['locationMapHierarchy']
-with open('/home/horno/hackathons/junction/wifi_stuff/OneDrive_1_11-15-2019/wifidata/notify.json.2019-11-04-16-54', 'r') as fd:
-    a = json.load(fd)
-dicc = defaultdict(lambda : defaultdict(list))
-
-for noti in a:
-    xy = get_coor(noti)
-    x = xy['x']
-    y = xy['y']
-    dicc[get_map(noti)][get_mac(noti)].append((x, y))
-
-# print(dicc)
-keys = list(dicc.keys())
-macs = list(dicc[keys[0]].keys())
-X, Y = list(zip(*dicc[keys[0]][macs[3]]))
-plt.scatter(X, Y)
-plt.show()
-'''
