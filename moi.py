@@ -30,7 +30,7 @@ def get_info(mac):
     tmp = db.child('places').get().val()
     a = list(tmp)
     key = a.pop(random.randint(0, len(a) - 1))
-    if random.randint(1,101) < 20:
+    if random.randint(1,101) < 80:
         return json.dumps({"response":"Nothing to see here"})
     return json.dumps({"response":str(tmp[key]['message'])})
 
